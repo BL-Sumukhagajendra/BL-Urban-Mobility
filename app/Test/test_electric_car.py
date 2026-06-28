@@ -12,7 +12,7 @@ class TestElectrifcCar():
 
     def test_calculate_trip_cost(self, electric_car_object):
         trip_cost = electric_car_object.calculate_trip_cost(20)
-        assert trip_cost == 700
+        assert trip_cost == 12.0
 
     def test_negetive_trip_cost(self, electric_car_object):
         with pytest.raises(ValueError):

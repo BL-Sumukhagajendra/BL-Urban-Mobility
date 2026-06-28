@@ -6,6 +6,7 @@ class ElectricScooter(Vehicle):
         self.max_speed_limit = max_speed_limit
 
     def calculate_trip_cost(self, distance: int):
+        base = 1
         if distance <= 0:
             raise ValueError("Invalid distance")
-        return distance * 15
+        return distance * 0.15 + base
