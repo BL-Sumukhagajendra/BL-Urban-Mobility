@@ -43,5 +43,3 @@ class TestVehicle:
     def test_maintain_status_wrong_input(self, vehicle):
         with pytest.raises(ValueError):
             vehicle.set_maintain_status = "ABCD"
-
-
