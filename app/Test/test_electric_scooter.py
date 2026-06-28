@@ -10,4 +10,10 @@ class TestElectricScooter():
         electric_scooter_object.max_speed_limit = 10
         assert electric_scooter_object.max_speed_limit == 10
 
-    
+    def test_calculate_trip_cost(self, electric_scooter_object):
+        trip_cost = electric_scooter_object.calculate_trip_cost(20)
+        assert trip_cost == 300
+
+    def test_negetive_trip_cost(self, electric_scooter_object):
+        with pytest.raises(ValueError):
+            electric_scooter_object.calculate_trip_cost(-10)

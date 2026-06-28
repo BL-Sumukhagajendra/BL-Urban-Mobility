@@ -5,3 +5,7 @@ class ElectricCar(Vehicle):
         super().__init__(vehicle_id, model)
         self.seating_capacity = seating_capacity
 
+    def calculate_trip_cost(self, distance: int):
+        if distance <= 0:
+            raise ValueError("Invalid Distance")
+        return distance * 35
