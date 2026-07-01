@@ -4,3 +4,16 @@ class FleetHub:
         self.hub_name = hub_name
         self.vehicles = []
     
+    def add_vehicle(self, vehicle):
+
+        duplicate_vehicle = [
+            existing_vehicle
+            for existing_vehicle in self.vehicles
+            if existing_vehicle == vehicle
+        ]
+
+        if duplicate_vehicle:
+            return False
+
+        self.vehicles.append(vehicle)
+        return True

@@ -29,6 +29,13 @@ class Vehicle(ABC):
 
         self.__maitainence_status = status
 
+    def __eq__(self, other):
+        if not isinstance(other, Vehicle):
+            raise ValueError("Object mismatch")
+        
+        return self.vehicle_id == other.vehicle_id
+        
+
     @abstractmethod
     def calculate_trip_cost(distance):
         pass

@@ -1,6 +1,6 @@
 from app.models.electric_cars import ElectricCar
 from app.models.electric_scooter import ElectricScooter
-from app.models.fleet_service import FleetService
+from app.Services.fleet_service import FleetService
 
 
 # Un-necessary.
