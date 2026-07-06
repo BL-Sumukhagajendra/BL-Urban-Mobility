@@ -38,7 +38,7 @@ class Vehicle(ABC):
     def __str__(self):
         id = self.vehicle_id
         model = self.model
-        return "Vehicle Id: " + id + "\nVehicle Name: " + model
+        return "Vehicle Id: " + str(id) + "\nVehicle Name: " + model
 
     @abstractmethod
     def calculate_trip_cost(distance):

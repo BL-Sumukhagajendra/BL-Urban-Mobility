@@ -54,3 +54,30 @@ class TestFleetService:
         result = fleet_service.add_vehicle_to_hub("Airport", vehicle2)
 
         assert result is False
+
+    def test_categorize_vehicles(self, fleet_service):
+        fleet_service.add_hub("Airport")
+        car = ElectricCar(101, "Tesla")
+        scooter = ElectricScooter(102, "Ola")
+
+        fleet_service.add_vehicle_to_hub("Airport", car)
+        fleet_service.add_vehicle_to_hub("Airport", scooter)
+        categorized = fleet_service.categorize_vehicles()
+
+        assert len(categorized["ElectricCar"]) == 1
+        assert len(categorized["ElectricScooter"]) == 1
+        assert car in categorized["ElectricCar"]
+        assert scooter in categorized["ElectricScooter"]
+
+    def test_multiple_cars(self, fleet_service):
+        fleet_service.add_hub("Airport")
+        car1 = ElectricCar(101, "Tesla")
+        car2 = ElectricCar(102, "BYD")
+
+        fleet_service.add_vehicle_to_hub("Airport", car1)
+        fleet_service.add_vehicle_to_hub("Airport", car2)
+        categorized = fleet_service.categorize_vehicles()
+
+        assert len(categorized["ElectricCar"]) == 2
+        assert car1 in categorized["ElectricCar"]
+        assert car2 in categorized["ElectricCar"]

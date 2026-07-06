@@ -27,7 +27,8 @@ while True:
     print("3. Display Hubs")
     print("4. Search Vehicles")
     print("5. Search High Battery Vehicle")
-    print("6. Exit")
+    print("6. Categorized View")
+    print("7. Exit")
 
     choice = int(input("Enter your choice: "))
 
@@ -91,7 +92,7 @@ while True:
         vehicles = service.search_high_battery_vehicles()
 
         if not vehicles:
-            print("No vehicle has battery above 80%")
+            print("No vehicle with battery above 80%")
 
         else:
 
@@ -100,8 +101,26 @@ while True:
 
     elif choice == 6:
 
+        categorized = service.categorize_vehicles()
+
+        print("\n-------------- Electric Cars --------------")
+        if categorized["ElectricCar"]:
+            for vehicle in categorized["ElectricCar"]:
+                print(vehicle)
+        else:
+            print("No Electric Cars Available")
+
+        print("\n-------------- Electric Scooters --------------")
+        if categorized["ElectricScooter"]:
+            for vehicle in categorized["ElectricScooter"]:
+                print(vehicle)
+        else:
+            print("No Electric Scooters")
+
+    elif choice == 7:
+
         print("Exiting Fleet Management System...")
         break
 
     else:
-        print("Invalid Choice.")
+        print("Invalid Choice")

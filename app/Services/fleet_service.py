@@ -1,5 +1,6 @@
 from app.models.fleet_hub import FleetHub
-from app.models.vehicle import Vehicle
+from app.models.electric_scooter import ElectricScooter
+from app.models.electric_cars import ElectricCar
 
 class FleetService:
     def __init__(self):
@@ -54,3 +55,22 @@ class FleetService:
                 vehicles
             )
         )
+
+    def categorize_vehicles(self):
+
+        categorized = {
+            "ElectricCar": [],
+            "ElectricScooter": []
+        }
+
+        for hub in self.fleet_hub.values():
+
+            for vehicle in hub.vehicles:
+
+                if isinstance(vehicle, ElectricCar):
+                    categorized["ElectricCar"].append(vehicle)
+
+                elif isinstance(vehicle, ElectricScooter):
+                    categorized["ElectricScooter"].append(vehicle)
+
+        return categorized
