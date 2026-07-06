@@ -28,7 +28,8 @@ while True:
     print("4. Search Vehicles")
     print("5. Search High Battery Vehicle")
     print("6. Categorized View")
-    print("7. Exit")
+    print("7. Fleet Analytics")
+    print("8. Exit")
 
     choice = int(input("Enter your choice: "))
 
@@ -119,6 +120,15 @@ while True:
 
     elif choice == 7:
 
+        analytics = service.fleet_analytics()
+
+        print("\n----------- Fleet Analytics -----------")
+
+        print(f"Available           : {analytics['Available']}")
+        print(f"On Trip             : {analytics['On Trip']}")
+        print(f"Under Maintenance   : {analytics['Under Maintenance']}")
+
+    elif choice == 8:
         print("Exiting Fleet Management System...")
         break
 

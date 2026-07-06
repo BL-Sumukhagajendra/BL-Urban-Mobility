@@ -74,3 +74,19 @@ class FleetService:
                     categorized["ElectricScooter"].append(vehicle)
 
         return categorized
+    
+    def fleet_analytics(self):
+
+        analytics = {
+            "Available": 0,
+            "On Trip": 0,
+            "Under Maintenance": 0
+        }
+
+        for hub in self.fleet_hub.values():
+
+            for vehicle in hub.vehicles:
+
+                analytics[vehicle.status] += 1
+
+        return analytics
