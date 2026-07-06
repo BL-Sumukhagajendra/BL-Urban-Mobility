@@ -25,7 +25,9 @@ while True:
     print("1. Add Hub")
     print("2. Add Vehicle")
     print("3. Display Hubs")
-    print("4. Exit")
+    print("4. Search Vehicles")
+    print("5. Search High Battery Vehicle")
+    print("6. Exit")
 
     choice = int(input("Enter your choice: "))
 
@@ -71,6 +73,32 @@ while True:
         service.display_hubs()
 
     elif choice == 4:
+
+        hub_name = input("Enter Hub Name : ")
+
+        vehicles = service.search_by_hub(hub_name)
+
+        if not vehicles:
+            print("No vehicles found.")
+
+        else:
+
+            for vehicle in vehicles:
+                print(vehicle)
+
+    elif choice == 5:
+
+        vehicles = service.search_high_battery_vehicles()
+
+        if not vehicles:
+            print("No vehicle has battery above 80%")
+
+        else:
+
+            for vehicle in vehicles:
+                print(vehicle)
+
+    elif choice == 6:
 
         print("Exiting Fleet Management System...")
         break

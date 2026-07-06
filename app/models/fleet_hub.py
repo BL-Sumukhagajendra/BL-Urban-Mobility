@@ -17,3 +17,15 @@ class FleetHub:
 
         self.vehicles.append(vehicle)
         return True
+
+    def __str__(self):
+        output = ""
+
+        if not self.vehicles:
+            return "No vehicles are added to this hub"
+
+        for vehicle in self.vehicles:
+            output += str(f"{vehicle}\n")
+        
+        return output
+    

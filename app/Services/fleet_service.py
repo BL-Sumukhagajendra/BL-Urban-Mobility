@@ -35,3 +35,22 @@ class FleetService:
         return True
     
     
+    def search_by_hub(self, hub_name: str):
+
+        if hub_name not in self.fleet_hub:
+            return []
+        return self.fleet_hub[hub_name].vehicles
+    
+    def search_high_battery_vehicles(self):
+
+        vehicles = []
+
+        for hub in self.fleet_hub.values():
+            vehicles.extend(hub.vehicles)
+
+        return list(
+            filter(
+                lambda vehicle: vehicle.battery_percentage > 80,
+                vehicles
+            )
+        )

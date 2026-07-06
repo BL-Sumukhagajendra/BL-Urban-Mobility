@@ -34,7 +34,11 @@ class Vehicle(ABC):
             raise ValueError("Object mismatch")
         
         return self.vehicle_id == other.vehicle_id
-        
+    
+    def __str__(self):
+        id = self.vehicle_id
+        model = self.model
+        return "Vehicle Id: " + id + "\nVehicle Name: " + model
 
     @abstractmethod
     def calculate_trip_cost(distance):
